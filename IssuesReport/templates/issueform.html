@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- {% for x, y in form.fields.employeeId.choices%}{{y}} {{request.user}}
+    {% if request.user == y %} <p>test</p> {% endif %}
+{%endfor%} -->
+
+    <div>
+        <form  method="post" enctype="multipart/form-data" action="{% url 'addIssue' %}" ALIGN="center">
+            {% csrf_token %}
+            <label for="employeeId" >EmployeeId: </label>
+            <select name="employeeId" id="employeeId">
+                {% for x, y in form.fields.employeeId.choices%}
+                    <option value="{{x}}" selected="{% if user.employeeId == y %}selected{% endif %}" >{{y}}</option>
+                {%endfor%}
+            </select>
+            <br>
+            <label for="Issue">Issue: </label>
+            <select name="issue" id="Issue">
+                {% for x, y in form.fields.issue.choices%}
+                <option value="{{x}}">{{y}}</option>
+            {%endfor%}
+            </select>
+            <!-- {% for fields in form %}
+                {{fields.name}}
+            {% endfor %} -->
+            <br>
+            <br>
+            <input type="submit" value="Add Issue" >
+        </form>
+    </div>
+{% endblock %}
+
+<script>
+    var employeeId = document.get
+</script>

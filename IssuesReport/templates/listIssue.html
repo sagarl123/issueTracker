@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+   <table class="center">
+      <tr>
+         <th>Employee ID</th>
+         <th>Issue</th>
+      </tr>
+      {% for issue in object_list %}
+         <tr>
+            <td>{{issue.employeeId}}</td>
+            <td><a href="{% url 'issueDetail' issue.pk %}" >{{issue.issue}}</a></td>
+         </tr>
+      {% endfor %}
+   </table>
+{% endblock %}
